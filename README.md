@@ -1,7 +1,7 @@
 Gofr
 ==========
 
-*Gofr* (pronounced "gopher") is a Feed Reader (Google Reader clone) for [Google App Engine] [1]. It grew out of my frustration with [grr's] [2] relational database backend, and my inability to optimize it beyond unsatisfactory results. 
+*Gofr* (pronounced "gopher") is a Feed Reader (Google Reader clone) for [Google App Engine] [1]. It grew out of my frustration with [grr's] [2] relational database backend, and the inability to optimize it beyond unsatisfactory results. 
 
 _Gofr_ is written in [Go] [3], and uses the [Google Cloud Datastore] [4]. Like _grr_, it relies heavily on [JavaScript] [5].
 
@@ -18,7 +18,7 @@ To deploy:
 1. Clone the repository: `git clone https://github.com/melllvar/Gofr.git`
 2. Change into the new directory: `cd Gofr`
 3. Edit [app.yaml](app.yaml) and change the name of the application (initially "gofr-io") to one of your choosing
-4. Deploy to production: `appcfg.py --oauth2 update .`
+4. Deploy to production: `appcfg.py update .`
 
 Dev Server Notes
 ----------------
