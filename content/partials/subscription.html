@@ -1,0 +1,7 @@
+<li class="subscription" ng-class="{ 'root': subscription.parent == null, 'folder': subscription.items != null, 'leaf': subscription.items == null }">
+  <div class="subscription-item" ng-class="{ 'has-unread': subscription.unread > 0 }" ng-click="select(subscription)">
+    <span class="chevron"></span>
+    <div class="subscription-icon"></div>
+    <span class="subscription-title">{{subscription.title}}</span><span class="subscription-unread-count">({{subscription.unread}})</span>
+  </div>
+</li>

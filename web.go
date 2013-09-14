@@ -24,23 +24,12 @@
 package gofr
 
 import (
-  "html/template"
-  "net/http"
 )
-
-var indexTemplate = template.Must(template.New("index").Parse(indexTemplateHTML))
 
 func registerWeb() {
   RegisterHTMLRoute("/", index)
-  RegisterHTMLRoute("/ang", angularIndex)
 }
 
 func index(pfc *PFContext) {
-  if err := indexTemplate.Execute(pfc.W, nil); err != nil {
-    http.Error(pfc.W, err.Error(), http.StatusInternalServerError)
-  }
-}
-
-func angularIndex(pfc *PFContext) {
-  pfc.W.Write([]byte(angularIndexTemplateHTML))
+  pfc.W.Write([]byte(indexTemplateHTML))
 }

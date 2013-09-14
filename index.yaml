@@ -33,3 +33,13 @@ indexes:
   ancestor: yes
   properties:
   - name: UpdateIndex
+
+- kind: Folder
+  ancestor: yes
+  properties:
+  - name: Title
+
+- kind: Subscription
+  ancestor: yes
+  properties:
+  - name: Title
