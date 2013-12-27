@@ -33,12 +33,14 @@ import (
 
 func registerWeb() {
 	RegisterHTMLRoute("/reader", reader)
+	RegisterHTMLRoute("/reader2", reader2)
 	RegisterHTMLRoute("/export",  exportOPML)
 
 	RegisterAnonHTMLRoute("/",    intro)
 }
 
 var readerTemplate = template.Must(template.New("reader").Parse(readerTemplateHTML))
+var readerTemplate2 = template.Must(template.New("reader2").Parse(readerTemplate2HTML))
 var introTemplate = template.Must(template.New("intro").Parse(introTemplateHTML))
 
 func intro(pfc *PFContext) {
@@ -62,6 +64,19 @@ func reader(pfc *PFContext) {
 	}
 
 	if err := readerTemplate.Execute(pfc.W, content); err != nil {
+		http.Error(pfc.W, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func reader2(pfc *PFContext) {
+	content := map[string]string {
+		"UserEmail": pfc.User.EmailAddress,
+	}
+	if logoutURL, err := user.LogoutURL(pfc.C, "/"); err == nil {
+		content["LogOutURL"] = logoutURL
+	}
+
+	if err := readerTemplate2.Execute(pfc.W, content); err != nil {
 		http.Error(pfc.W, err.Error(), http.StatusInternalServerError)
 	}
 }
